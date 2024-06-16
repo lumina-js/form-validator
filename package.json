@@ -1,5 +1,5 @@
 {
-  "name": "form-validator",
+  "name": "lumina-form-validator",
   "version": "1.0.0",
   "description": "Javascript form validator library",
   "main": "index.js",
@@ -10,6 +10,19 @@
     "type": "git",
     "url": "git+https://github.com/lumina-js/form-validator.git"
   },
+  "keywords" : [
+    "javascript",
+    "luminajs",
+    "lumina-js",
+    "bhaswanth53",
+    "form-validator",
+    "form validator",
+    "js-form-validator",
+    "js form validator",
+    "form validation",
+    "simple form validation",
+    "javascript form validation"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
