@@ -5,8 +5,16 @@ import {
 } from "./patterns"
 
 export function isRequired(value) {
-    if(value == "" || value.length == 0 || value == undefined) {
+    if(value == "" || value == null || value == undefined) {
         return false
+    }
+
+    if (Array.isArray(value) && value.length === 0) {
+        return false;
+    }
+
+    if (typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length === 0) {
+        return false;
     }
 
     return true
@@ -85,4 +93,12 @@ export function checkEqual(value1, value2) {
         return false
     }
     return true
+}
+
+export function checkInteger(value) {
+    return Number.isInteger(value)
+}
+
+export function checkString(value) {
+    return typeof value === 'string' && value.trim().length > 0;
 }

@@ -1,4 +1,4 @@
-import { checkCustomPattern, checkEmail, checkEqual, checkMaxLength, checkMaxValue, checkMinLength, checkMinValue, checkPassword, checkUrl, isRequired } from "./utils"
+import { checkCustomPattern, checkEmail, checkEqual, checkInteger, checkMaxLength, checkMaxValue, checkMinLength, checkMinValue, checkPassword, checkUrl, isRequired } from "./utils"
 
 export default class Validator {
     constructor(data) {
@@ -21,14 +21,24 @@ export default class Validator {
     required() {
         let value = this.data[this.id]
         if(!isRequired(value)) {
-            this.error(this.id, `${this.elem} field is required`)
+            this.error(this.id, `${this.elem} is required`)
         }
         return this
     }
 
     integer() {
         let value = this.data[this.id]
-        this.data[this.id] = parseInt(value)
+        if(!checkInteger(value)) {
+            this.error(this.id, `${this.elem} is not a valid integer`)
+        }
+        return this
+    }
+
+    string() {
+        let value = this.data[this.id]
+        if(!checkString(value)) {
+            this.error(this.id, `${this.elem} is not a valid string`)
+        }
         return this
     }
 
@@ -75,7 +85,7 @@ export default class Validator {
     email() {
         let value = this.data[this.id]
         if(!checkEmail(value)) {
-            this.error(this.id, `${this.elem} is not a valid email`)
+            this.error(this.id, `${this.elem} is not a valid email format`)
         }
         return this
     }
