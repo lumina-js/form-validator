@@ -114,6 +114,14 @@ export default class Validator {
         return this
     }
 
+    extend(func) {
+        let value = this.data[this.id]
+        if(!func(value)) {
+            this.error(this.id, `${this.elem} is not a valid value`)
+        }
+        return this
+    }
+
     error(id, value) {
         if(this.errors[id] == "" || this.errors[id] == undefined)
             this.errors[id] = value

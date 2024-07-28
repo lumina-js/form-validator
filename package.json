@@ -1,7 +1,7 @@
 {
   "name": "lumina-form-validator",
-  "version": "1.0.0",
-  "description": "Javascript form validator library",
+  "version": "1.0.2",
+  "description": "A lightweight, extendable JavaScript library for form validation.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

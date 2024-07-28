@@ -30,12 +30,16 @@ import { Validator } from 'lumina-form-validator'
 const validator = new Validator({
         name: '',
         age: '18',
-        email: 'naruto'
+        email: 'naruto',
+        phone: '9848022338'
     })
 
 validator.attr('name').label('Name').required()
 validator.attr('age').label('Age').required().integer()
 validator.attr('email').label('Email').required().email()
+validator.attr('phone').label('Phone Number').extend((value) => {
+    return typeof(value) === 'string'
+})
 
 if(validator.isSuccess()) {
     return 'Validation success'
@@ -73,7 +77,8 @@ Errors will be returned as below from `getErrors()` method :
 |email()|Check if the value is a valid email.|
 |password()|Check if the value is a valid password.|
 |pattern(format)|Check if the value is matching with the custom pattern given.|
-|equals(val)|Check if the value is equal to the given value.
+|equals(val)|Check if the value is equal to the given value.|
+|extend(function)|To extend validator to add your own validation.|
 |isSuccess()|Check if the validation is success of not. Returns boolean value.|
 |getErrors()|Get the errors as object if validation fails.|
 
