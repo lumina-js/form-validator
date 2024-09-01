@@ -11,8 +11,8 @@ import {
     checkEqual,
     checkInteger,
     checkString
-} from "../index";
-import { emailPattern } from "../src/patterns";
+} from "../dist";
+import { emailPattern } from "../dist/patterns";
 
 test('Check isRequired', () => {
     expect(isRequired('Naruto')).toBe(true)

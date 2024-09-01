@@ -1,4 +1,4 @@
-import { Validator } from "../index.js"
+import { Validator } from "../dist"
 
 test('Check invalid email :: ', () => {
     const validator = new Validator({

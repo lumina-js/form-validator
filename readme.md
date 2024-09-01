@@ -100,7 +100,7 @@ Lumina form validator provides util methods for each type of validation. You can
 import {  
     isRequired, 
     checkEmail,
-} from "../index";
+} from "lumina-form-validator";
 
 if(isRequired('Naruto')) {
     return 'Valid'
@@ -125,5 +125,6 @@ if(isRequired('Naruto')) {
 |checkEqual(value1, value2)|Check if value1 and value2 are equal.|
 |checkInteger(value)|Check if value is a valid integer.|
 |checkString(value)|Check if value is a valid string.|
+
 
 Alright, happy coding :)

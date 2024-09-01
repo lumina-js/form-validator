@@ -1,27 +1,31 @@
 {
   "name": "lumina-form-validator",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A lightweight, extendable JavaScript library for form validation.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lumina-js/form-validator.git"
   },
-  "keywords" : [
+  "keywords": [
     "javascript",
+    "typescript",
     "luminajs",
     "lumina-js",
     "bhaswanth53",
     "form-validator",
     "form validator",
     "js-form-validator",
-    "js form validator",
+    "ts-form-validator",
     "form validation",
     "simple form validation",
-    "javascript form validation"
+    "javascript form validation",
+    "typescript form validation"
   ],
   "author": "",
   "license": "ISC",
@@ -32,6 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
-    "babel-jest": "^29.7.0"
+    "babel-jest": "^29.7.0",
+    "typescript": "^5.5.4"
   }
 }
