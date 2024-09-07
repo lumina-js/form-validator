@@ -1,19 +1,37 @@
-import { checkCustomPattern, checkEmail, checkEqual, checkInteger, checkMaxLength, checkMaxValue, checkMinLength, checkMinValue, checkPassword, checkUrl, isRequired } from "./utils"
+import { IValidatorData, IValidatorErrors } from "./types/validatorTypes"
+import { 
+    checkCustomPattern, 
+    checkEmail, 
+    checkEqual, 
+    checkInteger, 
+    checkMaxLength, 
+    checkMaxValue, 
+    checkMinLength, 
+    checkMinValue, 
+    checkPassword, 
+    checkUrl, 
+    isRequired,
+    checkString
+} from "./utils"
 
 export default class Validator {
-    constructor(data) {
+    errors: IValidatorErrors = {}
+    id: any = ""
+    elem: any = ""
+    data: IValidatorData = {}
+    constructor(data: IValidatorData) {
         this.data = data
         this.errors = {}
         this.id = ""
         this.elem = ""
     }
 
-    attr(elem) {
+    attr(elem: string) {
         this.id = elem
         return this
     }
 
-    label(elem) {
+    label(elem: string) {
         this.elem = elem
         return this
     }
@@ -42,7 +60,7 @@ export default class Validator {
         return this
     }
 
-    minValue(size) {
+    minValue(size: number) {
         let value = this.data[this.id]
         if(!checkMinValue(value, size)) {
             this.error(this.id, `${this.elem} minimum value is ${size}`)
@@ -50,7 +68,7 @@ export default class Validator {
         return this
     }
 
-    maxValue(size) {
+    maxValue(size: number) {
         let value = this.data[this.id]
         if(!checkMaxValue(value, size)) {
             this.error(this.id, `${this.elem} maximum value is ${size}`)
@@ -58,7 +76,7 @@ export default class Validator {
         return this
     }
 
-    minLength(size) {
+    minLength(size: number) {
         let value = this.data[this.id]
         if(!checkMinLength(value, size)) {
             this.error(this.id, `${this.elem} must be atleast ${size} of length`)
@@ -66,7 +84,7 @@ export default class Validator {
         return this
     }
 
-    maxLength(size) {
+    maxLength(size: number) {
         let value = this.data[this.id]
         if(!checkMaxLength(value, size)) {
             this.error(this.id, `${this.elem} must be maximum ${size} of length`)
@@ -98,7 +116,7 @@ export default class Validator {
         return this
     }
 
-    pattern(pat) {
+    pattern(pat: any) {
         let value = this.data[this.id]
         if(!checkCustomPattern(value, pat)) {
             this.error(this.id, `${this.elem} is not matched with pattern`)
@@ -106,7 +124,7 @@ export default class Validator {
         return this
     }
 
-    equals(val) {
+    equals(val: any) {
         let value = this.data[this.id]
         if(!checkEqual(value, val)) {
             this.error(this.id, `${this.elem} is not equal to the value`)
@@ -114,7 +132,7 @@ export default class Validator {
         return this
     }
 
-    extend(func) {
+    extend(func: Function) {
         let value = this.data[this.id]
         if(!func(value)) {
             this.error(this.id, `${this.elem} is not a valid value`)
@@ -122,7 +140,7 @@ export default class Validator {
         return this
     }
 
-    error(id, value) {
+    error(id: string, value: any) {
         if(this.errors[id] == "" || this.errors[id] == undefined)
             this.errors[id] = value
     }
