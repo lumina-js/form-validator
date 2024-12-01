@@ -141,8 +141,6 @@ const validator = new Validator({
 	'secondFile' : secondFile
 })
 
-  
-
 validator.attr('firstFile').label('First File').file().maxSize(2 * 1024 * 1024).allowedTypes(['image/*'])
 
 validator.attr('secondFile').label('Second File').file().maxSize(1 * 1024 * 1024).allowedTypes(['image/jpeg'])
