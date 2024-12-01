@@ -11,7 +11,10 @@ import {
     checkPassword, 
     checkUrl, 
     isRequired,
-    checkString
+    checkString,
+    checkFile,
+    checkMaxFileSize,
+    checkFileTypes
 } from "./utils"
 
 export default class Validator {
@@ -113,6 +116,34 @@ export default class Validator {
         if(!checkPassword(value)) {
             this.error(this.id, `${this.elem} is not a valid password`)
         }
+        return this
+    }
+
+    file() {
+        let file = this.data[this.id]
+        if (!checkFile(file)) {
+            this.error(this.id, `${this.elem} is not a valid file`)
+        }
+        return this
+    }
+
+    maxSize(size: number) {
+        let file = this.data[this.id]
+
+        if(!checkMaxFileSize(file, size)) {
+            this.error(this.id, `${this.elem} is greater too large`)
+        }
+
+        return this
+    }
+
+    allowedTypes(types: string[]) {
+        let file = this.data[this.id]
+
+        if(!checkFileTypes(file, types)) {
+            this.error(this.id, `${this.elem} is not a valid file type`)
+        }
+
         return this
     }
 

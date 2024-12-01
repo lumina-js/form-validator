@@ -59,7 +59,6 @@ Errors will be returned as below from `getErrors()` method :
     age: 'Age is not a valid integer'
 }
 ```
-
 #### Validator methods :
 
 |Method|Description|
@@ -111,20 +110,57 @@ if(isRequired('Naruto')) {
 
 #### Methods
 
-|Method|Description|
-|-|-|
-|isRequired(value)|Check if the value exists and valid.|
-|checkMinValue(value, size)|Check if the integer value is less than the size.|
-|checkMaxValue(value, size)|Check if the integer value is greater than the size.|
-|checkMinLength(value, size)|Check if array or string is minimum length of size.|
-|checkMaxLength(value, size)|Check if array or string is maximum length of size.|
-|checkUrl(value)|Check if value is a valid URL.|
-|checkEmail(value)|Check if value is a valid email.|
-|checkPassword(value)|Check if value is a valid password.|
-|checkCustomPattern(value, pattern)|Check if value matches with the pattern.|
-|checkEqual(value1, value2)|Check if value1 and value2 are equal.|
-|checkInteger(value)|Check if value is a valid integer.|
-|checkString(value)|Check if value is a valid string.|
+| Method                             | Description                                          |
+| ---------------------------------- | ---------------------------------------------------- |
+| isRequired(value)                  | Check if the value exists and valid.                 |
+| checkMinValue(value, size)         | Check if the integer value is less than the size.    |
+| checkMaxValue(value, size)         | Check if the integer value is greater than the size. |
+| checkMinLength(value, size)        | Check if array or string is minimum length of size.  |
+| checkMaxLength(value, size)        | Check if array or string is maximum length of size.  |
+| checkUrl(value)                    | Check if value is a valid URL.                       |
+| checkEmail(value)                  | Check if value is a valid email.                     |
+| checkPassword(value)               | Check if value is a valid password.                  |
+| checkCustomPattern(value, pattern) | Check if value matches with the pattern.             |
+| checkEqual(value1, value2)         | Check if value1 and value2 are equal.                |
+| checkInteger(value)                | Check if value is a valid integer.                   |
+| checkString(value)                 | Check if value is a valid string.                    |
+| checkFile(file)                    | Check if value is a valid file.                      |
+| checkMaxFileSize(file, size)       | Check if file size is within max size limit.         |
+| checkFileTypes(file, types)        | Check if file type is allowed or not.                |
 
+#### File Validation Example :
+
+**Using Validator :**
+
+```js
+const validator = new Validator({
+	'firstFile' : firstFile,
+	'secondFile' : secondFile
+})
+
+  
+
+validator.attr('firstFile').label('First File').file().maxSize(2 * 1024 * 1024).allowedTypes(['image/*'])
+
+validator.attr('secondFile').label('Second File').file().maxSize(1 * 1024 * 1024).allowedTypes(['image/jpeg'])
+```
+
+**Using Methods :**
+
+```js
+checkFile(firstFile)
+checkMaxFileSize(firstFile, 2 * 1024 * 1024)
+checkFileTypes(firstFile, ['image/png', 'video/mp4'])
+```
+
+
+**Note :**
+Support for the Typescript has been added in the latest version, the project is now can be used along with Typescript.
+
+Run the below command to build with typescript :
+
+```
+npm run build
+```
 
 Alright, happy coding :)

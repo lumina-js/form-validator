@@ -10,7 +10,10 @@ import {
     checkCustomPattern,
     checkEqual,
     checkInteger,
-    checkString
+    checkString,
+    checkFile,
+    checkMaxFileSize,
+    checkFileTypes
 } from "../dist";
 import { emailPattern } from "../dist/patterns";
 
@@ -89,4 +92,23 @@ test('Test checkInteger', () => {
 test('Test checkString', () => {
     expect(checkString(2)).toBe(false)
     expect(checkString('2')).toBe(true)
+})
+
+test('Test files', () => {
+    const content = new Array(1024 * 1024).fill('a').join('');
+    let firstFile = new File([content], "example.png", { type: "image/png"  }); // 1MB PNG
+    let secondFile = new File([content], "example.jpg", { type: 'image/jpeg' }); // 1MB JPG
+
+    expect(checkFile(firstFile)).toBe(true)
+    expect(checkFile('example.png')).toBe(false)
+    expect(checkFile(secondFile)).toBe(true)
+
+    expect(checkMaxFileSize(firstFile, 2 * 1024 * 1024)).toBe(true)
+    expect(checkMaxFileSize(firstFile, 0.5 * 1024 * 1024)).toBe(false)
+    expect(checkMaxFileSize(secondFile, 1 * 1024 * 1024)).toBe(true)
+
+    expect(checkFileTypes(firstFile, ['image/png', 'video/mp4'])).toBe(true)
+    expect(checkFileTypes(firstFile, ['video/*'])).toBe(false)
+    expect(checkFileTypes(secondFile, ['image/*'])).toBe(true)
+    expect(checkFileTypes(secondFile, ['image/png', 'video/mp4'])).toBe(false)
 })

@@ -51,3 +51,19 @@ test('Check valid inputs :: ', () => {
 
     expect(validator.isSuccess()).toBe(true)
 })
+
+test('Check Files :: ', () => {
+    const content = new Array(1024 * 1024).fill('a').join('');
+    let firstFile = new File([content], "example.png", { type: "image/png"  }); // 1MB PNG
+    let secondFile = new File([content], "example.jpg", { type: 'image/jpeg' }); // 1MB JPG
+
+    const validator = new Validator({
+        'firstFile' : firstFile,
+        'secondFile' : secondFile
+    })
+
+    validator.attr('firstFile').label('First File').file().maxSize(2 * 1024 * 1024).allowedTypes(['image/*'])
+    validator.attr('secondFile').label('Second File').file().maxSize(1 * 1024 * 1024).allowedTypes(['image/jpeg'])
+    
+    expect(validator.isSuccess()).toBe(true)
+})
