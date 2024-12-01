@@ -61,25 +61,28 @@ Errors will be returned as below from `getErrors()` method :
 ```
 #### Validator methods :
 
-|Method|Description|
-|-|-|
-|attr()|Used to get attribute from the given object.|
-|name()|Set the proper user friendly name for the attribute field.|
-|required()|Check if the value is present|
-|integer()|Check if the value is proper integer|
-|string()|Check if the value is proper string|
-|minValue(size)|Check if the integer is below the given size.|
-|maxValue(size)|Check if the integer is above the given size.|
-|minLength(size)|Check if array or string contains minimum number of items.|
-|maxLength(size)|Check if array or sring exceeds maximum number of items.|
-|url()|Check if the value is a valid URL.|
-|email()|Check if the value is a valid email.|
-|password()|Check if the value is a valid password.|
-|pattern(format)|Check if the value is matching with the custom pattern given.|
-|equals(val)|Check if the value is equal to the given value.|
-|extend(function)|To extend validator to add your own validation.|
-|isSuccess()|Check if the validation is success of not. Returns boolean value.|
-|getErrors()|Get the errors as object if validation fails.|
+| Method              | Description                                                       |
+| ------------------- | ----------------------------------------------------------------- |
+| attr()              | Used to get attribute from the given object.                      |
+| name()              | Set the proper user friendly name for the attribute field.        |
+| required()          | Check if the value is present                                     |
+| integer()           | Check if the value is proper integer                              |
+| string()            | Check if the value is proper string                               |
+| minValue(size)      | Check if the integer is below the given size.                     |
+| maxValue(size)      | Check if the integer is above the given size.                     |
+| minLength(size)     | Check if array or string contains minimum number of items.        |
+| maxLength(size)     | Check if array or sring exceeds maximum number of items.          |
+| url()               | Check if the value is a valid URL.                                |
+| file()              | Check if the value is a valid File.                               |
+| maxSize(size)       | Check if the file is within valid size limit.                     |
+| allowedTypes(types) | Check if the file type is allowed.                                |
+| email()             | Check if the value is a valid email.                              |
+| password()          | Check if the value is a valid password.                           |
+| pattern(format)     | Check if the value is matching with the custom pattern given.     |
+| equals(val)         | Check if the value is equal to the given value.                   |
+| extend(function)    | To extend validator to add your own validation.                   |
+| isSuccess()         | Check if the validation is success of not. Returns boolean value. |
+| getErrors()         | Get the errors as object if validation fails.                     |
 
 #### Password format :
 
