@@ -17,6 +17,9 @@ export default class Validator {
     url(): this;
     email(): this;
     password(): this;
+    file(): this;
+    maxSize(size: number): this;
+    allowedTypes(types: string[]): this;
     pattern(pat: any): this;
     equals(val: any): this;
     extend(func: Function): this;

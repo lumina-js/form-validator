@@ -1,4 +1,4 @@
-import { checkCustomPattern, checkEmail, checkEqual, checkInteger, checkMaxLength, checkMaxValue, checkMinLength, checkMinValue, checkPassword, checkUrl, isRequired, checkString } from "./utils";
+import { checkCustomPattern, checkEmail, checkEqual, checkInteger, checkMaxLength, checkMaxValue, checkMinLength, checkMinValue, checkPassword, checkUrl, isRequired, checkString, checkFile, checkMaxFileSize, checkFileTypes } from "./utils";
 export default class Validator {
     constructor(data) {
         this.errors = {};
@@ -85,6 +85,27 @@ export default class Validator {
         let value = this.data[this.id];
         if (!checkPassword(value)) {
             this.error(this.id, `${this.elem} is not a valid password`);
+        }
+        return this;
+    }
+    file() {
+        let file = this.data[this.id];
+        if (!checkFile(file)) {
+            this.error(this.id, `${this.elem} is not a valid file`);
+        }
+        return this;
+    }
+    maxSize(size) {
+        let file = this.data[this.id];
+        if (!checkMaxFileSize(file, size)) {
+            this.error(this.id, `${this.elem} is greater too large`);
+        }
+        return this;
+    }
+    allowedTypes(types) {
+        let file = this.data[this.id];
+        if (!checkFileTypes(file, types)) {
+            this.error(this.id, `${this.elem} is not a valid file type`);
         }
         return this;
     }

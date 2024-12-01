@@ -82,3 +82,30 @@ export function checkInteger(value) {
 export function checkString(value) {
     return typeof value === 'string' && value.trim().length > 0;
 }
+export function checkFile(file) {
+    return (file instanceof File);
+}
+export function checkMaxFileSize(file, size) {
+    return file.size <= size ? true : false;
+}
+export function checkFileTypes(file, types) {
+    let typeValid = false;
+    if (types) {
+        for (let type of types) {
+            if (type.endsWith('/*')) {
+                let category = type.split('/')[0];
+                if (file.type.startsWith(`${category}/`)) {
+                    typeValid = true;
+                    break;
+                }
+            }
+            else {
+                if (file.type === type) {
+                    typeValid = true;
+                    break;
+                }
+            }
+        }
+    }
+    return typeValid;
+}

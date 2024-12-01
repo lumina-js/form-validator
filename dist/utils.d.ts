@@ -17,3 +17,6 @@ export declare function checkCustomPattern(value: any, pattern: any): boolean;
 export declare function checkEqual(value1: any, value2: any): boolean;
 export declare function checkInteger(value: any): boolean;
 export declare function checkString(value: any): boolean;
+export declare function checkFile(file: any): file is File;
+export declare function checkMaxFileSize(file: File, size: number): boolean;
+export declare function checkFileTypes(file: File, types: string[]): boolean;
